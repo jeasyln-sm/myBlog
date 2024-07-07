@@ -53,7 +53,6 @@ public class Member {
                 .name(memberDTO.getName())
                 .password(passwordEncoder.encode(memberDTO.getPassword()))
                 .build();
-
         return member;
     }
 
