@@ -55,6 +55,13 @@ public class MemberController {
         return "member/memberLoginForm";
     }
 
+    // 로그인 실패
+    @GetMapping("/member/login/error")
+    public String loginError(Model model) {
+        model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호가 일치하지 않습니다.");
+        return "member/memberLoginForm";
+    }
+
 
     // 로그아웃
     @GetMapping("/member/logout")
