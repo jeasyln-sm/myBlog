@@ -22,7 +22,7 @@ public class MemberController {
     // 회원 등록
     @GetMapping("/member/new")
     public String createMember(Model model) {
-        model.addAttribute("MemberDTO", new MemberDTO());
+        model.addAttribute("memberDTO", new MemberDTO());
         return "member/memberForm";
     }
 
@@ -41,5 +41,12 @@ public class MemberController {
         }
 
         return "redirect:/";
+    }
+
+
+    // 로그인
+    @GetMapping("/member/login")
+    public String loginForm() {
+        return "member/memberLoginForm";
     }
 }
