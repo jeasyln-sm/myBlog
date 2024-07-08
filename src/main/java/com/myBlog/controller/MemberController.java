@@ -3,9 +3,14 @@ package com.myBlog.controller;
 import com.myBlog.dto.MemberDTO;
 import com.myBlog.entity.Member;
 import com.myBlog.service.MemberService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -49,4 +54,17 @@ public class MemberController {
     public String loginForm() {
         return "member/memberLoginForm";
     }
+
+
+    // 로그아웃
+    @GetMapping("/member/logout")
+    public String logoutForm(HttpServletRequest request, HttpServletResponse response) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication != null) {
+            new SecurityContextLogoutHandler().logout(request, response, authentication);
+        }
+
+        return "redirect:/";
+    }
 }
+

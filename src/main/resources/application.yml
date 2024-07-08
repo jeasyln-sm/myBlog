@@ -32,7 +32,7 @@ spring:
   jpa:
     open-in-view: true      #
     hibernate:
-      ddl-auto: create     # create, update, ...
+      ddl-auto: update     # create, update, ...
     show-sql: true          # SQL ?? ???
     properties:
       hibernate:
