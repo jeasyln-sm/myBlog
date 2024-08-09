@@ -44,14 +44,12 @@ public class Article {
     private Member member;
 
 
-    private static Article createArticle(ArticleDTO articleDTO) {
-        Article article = Article.builder()
+    public static Article createArticle(ArticleDTO articleDTO, Member member) {
+        return Article.builder()
                 .title(articleDTO.getTitle())
                 .content(articleDTO.getContent())
-                .createTime(articleDTO.getCreateTime())
-                .member(articleDTO.getMember())
+                .createTime(LocalDateTime.now())
+                .member(member)
                 .build();
-
-        return article;
     }
 }

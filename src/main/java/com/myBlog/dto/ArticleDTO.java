@@ -20,6 +20,6 @@ public class ArticleDTO {
     private String title;
     private String content;
     private LocalDateTime createTime;
-    private Member member;
+    private MemberDTO member;
 
 }

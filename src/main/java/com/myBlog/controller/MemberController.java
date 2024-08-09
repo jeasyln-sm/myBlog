@@ -24,7 +24,7 @@ public class MemberController {
     private final MemberService memberService;
     private final PasswordEncoder passwordEncoder;
 
-    // 회원 등록
+    // 회원 등록 -> form으로 이동
     @GetMapping("/member/new")
     public String createMember(Model model) {
         model.addAttribute("memberDTO", new MemberDTO());
@@ -36,7 +36,6 @@ public class MemberController {
         if (bindingResult.hasErrors()) {
             return "member/memberForm";
         }
-
         try {
             Member member = Member.createMember(memberDTO, passwordEncoder);
             memberService.saveMember(member);
@@ -61,7 +60,6 @@ public class MemberController {
         model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호가 일치하지 않습니다.");
         return "member/memberLoginForm";
     }
-
 
     // 로그아웃
     @GetMapping("/member/logout")

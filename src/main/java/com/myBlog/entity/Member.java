@@ -49,7 +49,8 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "Member", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Article> articles = new ArrayList<>();
 
 

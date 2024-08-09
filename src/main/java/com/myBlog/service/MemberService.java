@@ -41,4 +41,11 @@ public class MemberService implements UserDetailsService {
                 .roles(member.getRole().toString())
                 .build();
     }
+
+
+    // email로 member 객체 조회
+    public Member findByEmail(String email) {
+        return memberRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException("Member not found with email: " + email));
+    }
 }
